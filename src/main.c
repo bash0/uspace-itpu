@@ -12,10 +12,16 @@ int main()
 {    
       srand ( time(NULL) );
       initscr();
-      int i=0;
+      time_t startTime;
+      time(&startTime);
       while(1)
       {
-	    printw("Current Sensor output:\n\n");
+	    time_t currentTime;
+	    time ( &currentTime );
+	    currentTime -= startTime;
+	  	    
+	    printw("Current Sensor output:\n");
+	    printw("%ld s\n\n", currentTime );
 	    printw("Magnetometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
 	    printw("Accelerometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
 	    printw("Gyroscope:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
