@@ -1,6 +1,6 @@
 Ok. If you install qemu-kvm and qemu-kvm-extras it should be enough to run the beagle-board
 The sd-card-image I use at the moment, you can find here:
-http://dl.dropbox.com/u/68447684/rootfs.img (at the moment it's still uploading don't know when it's finished)
+http://dl.dropbox.com/u/68447684/rootfs.img
 
 you can start the vm by issuing this command:
 qemu-system-arm -M beagle -drive if=sd,cache=writeback,file=$1 -clock unix -nographic -device usb-kbd -device usb-mouse -usb -device usb-net,netdev=mynet -netdev user,id=mynet -redir tcp:2222::22
