@@ -1,0 +1,16 @@
+*.aux
+*.log
+*.backup
+*~
+*.pyc
+*.toc
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.o
+*.elf
+*.lof
+*.lot
+.DS_Store
+*.run.xml
