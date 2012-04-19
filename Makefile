@@ -6,26 +6,25 @@ SRCDIR   = src
 OBJDIR   = obj
 BINDIR   = build
 
-CC = gcc
 SRCS    := $(shell find $(SRCDIR) -name '*.$(SRCEXT)')
 SRCDIRS := $(shell find . -name '*.$(SRCEXT)' -exec dirname {} \; | uniq)
 OBJS    := $(patsubst %.$(SRCEXT),$(OBJDIR)/%.o,$(SRCS))
 
 DEBUG    = -g
 # maybe INCLUDES = -I../nmealib/include/nmea
-INCLUDES = -I../nmealib/include
+INCLUDES = -I./nmealib/include
 
-# CFLAGS   = -Wall -pedantic -c $(DEBUG) $(INCLUDES)
+# CFLAGS   = -Wall -ped6antic -c $(DEBUG) $(INCLUDES)
 CFLAGS   = -Wall -c $(DEBUG) $(INCLUDES)
 
 #Its a static library so maybe different l-option? <-- check
-LDFLAGS  = -lncurses -L../nmealib/lib -lnmea
+LDFLAGS  = -lncurses -L./nmealib/lib -lnmea
 
-# ifeq ($(SRCEXT), cpp)
-# CC       = $(CXX)
+ifeq ($(SRCEXT), cpp)
+CC       = $(CXX)
 # else
 # CFLAGS  += -std=gnu99
-# endif
+endif
 
 .PHONY: all clean distclean
 
