@@ -1,0 +1,84 @@
+.TH "info.h" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+info.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'time.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fB_nmeaPOS\fP"
+.br
+.ti -1c
+.RI "struct \fB_nmeaSATELLITE\fP"
+.br
+.ti -1c
+.RI "struct \fB_nmeaSATINFO\fP"
+.br
+.ti -1c
+.RI "struct \fB_nmeaINFO\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fB_nmeaPOS\fP \fBnmeaPOS\fP"
+.br
+.ti -1c
+.RI "typedef struct \fB_nmeaSATELLITE\fP \fBnmeaSATELLITE\fP"
+.br
+.ti -1c
+.RI "typedef struct \fB_nmeaSATINFO\fP \fBnmeaSATINFO\fP"
+.br
+.ti -1c
+.RI "typedef struct \fB_nmeaINFO\fP \fBnmeaINFO\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition in file \fBinfo.h\fP.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fB_nmeaINFO\fP  \fBnmeaINFO\fP"Summary GPS information from all parsed packets, used also for generating NMEA stream 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmea_parse\fP 
+.PP
+\fBnmea_GPGGA2info\fP, nmea_...2info 
+.RE
+.PP
+
+.SS "typedef struct \fB_nmeaPOS\fP  \fBnmeaPOS\fP"Position data in fractional degrees or radians 
+.SS "typedef struct \fB_nmeaSATELLITE\fP  \fBnmeaSATELLITE\fP"Information about satellite 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaSATINFO\fP 
+.PP
+\fBnmeaGPGSV\fP 
+.RE
+.PP
+
+.SS "typedef struct \fB_nmeaSATINFO\fP  \fBnmeaSATINFO\fP"Information about all satellites in view 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaINFO\fP 
+.PP
+\fBnmeaGPGSV\fP 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

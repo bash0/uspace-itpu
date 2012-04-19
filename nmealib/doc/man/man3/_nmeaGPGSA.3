@@ -1,0 +1,61 @@
+.TH "_nmeaGPGSA" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaGPGSA \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sentence.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "char \fBfix_mode\fP"
+.br
+.ti -1c
+.RI "int \fBfix_type\fP"
+.br
+.ti -1c
+.RI "int \fBsat_prn\fP [NMEA_MAXSAT]"
+.br
+.ti -1c
+.RI "double \fBPDOP\fP"
+.br
+.ti -1c
+.RI "double \fBHDOP\fP"
+.br
+.ti -1c
+.RI "double \fBVDOP\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+GSA packet information structure (Satellite status) 
+.PP
+Definition at line 60 of file sentence.h.
+.SH "Field Documentation"
+.PP 
+.SS "char \fB_nmeaGPGSA::fix_mode\fP"Mode (M = Manual, forced to operate in 2D or 3D; A = Automatic, 3D/2D) 
+.PP
+Definition at line 62 of file sentence.h.
+.SS "int \fB_nmeaGPGSA::fix_type\fP"Type, used for navigation (1 = Fix not available; 2 = 2D; 3 = 3D) 
+.PP
+Definition at line 63 of file sentence.h.
+.SS "double \fB_nmeaGPGSA::HDOP\fP"Horizontal dilution of precision 
+.PP
+Definition at line 66 of file sentence.h.
+.SS "double \fB_nmeaGPGSA::PDOP\fP"Dilution of precision 
+.PP
+Definition at line 65 of file sentence.h.
+.SS "int \fB_nmeaGPGSA::sat_prn\fP[NMEA_MAXSAT]"PRNs of satellites used in position fix (null for unused fields) 
+.PP
+Definition at line 64 of file sentence.h.
+.SS "double \fB_nmeaGPGSA::VDOP\fP"Vertical dilution of precision 
+.PP
+Definition at line 67 of file sentence.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

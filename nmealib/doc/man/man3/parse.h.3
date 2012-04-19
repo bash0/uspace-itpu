@@ -1,0 +1,315 @@
+.TH "parse.h" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+parse.h \- 
+.PP
+Functions of a low level for analysis of packages of NMEA stream.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'sentence.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBnmea_pack_type\fP (const char *buff, int buff_sz)"
+.br
+.RI "\fIDefine packet type by header (nmeaPACKTYPE). \fP"
+.ti -1c
+.RI "int \fBnmea_find_tail\fP (const char *buff, int buff_sz, int *res_crc)"
+.br
+.RI "\fIFind tail of packet ('\\r\\n') in buffer and check control sum (CRC). \fP"
+.ti -1c
+.RI "int \fBnmea_parse_GPGGA\fP (const char *buff, int buff_sz, \fBnmeaGPGGA\fP *pack)"
+.br
+.RI "\fIParse GGA packet from buffer. \fP"
+.ti -1c
+.RI "int \fBnmea_parse_GPGSA\fP (const char *buff, int buff_sz, \fBnmeaGPGSA\fP *pack)"
+.br
+.RI "\fIParse GSA packet from buffer. \fP"
+.ti -1c
+.RI "int \fBnmea_parse_GPGSV\fP (const char *buff, int buff_sz, \fBnmeaGPGSV\fP *pack)"
+.br
+.RI "\fIParse GSV packet from buffer. \fP"
+.ti -1c
+.RI "int \fBnmea_parse_GPRMC\fP (const char *buff, int buff_sz, \fBnmeaGPRMC\fP *pack)"
+.br
+.RI "\fIParse RMC packet from buffer. \fP"
+.ti -1c
+.RI "int \fBnmea_parse_GPVTG\fP (const char *buff, int buff_sz, \fBnmeaGPVTG\fP *pack)"
+.br
+.RI "\fIParse VTG packet from buffer. \fP"
+.ti -1c
+.RI "void \fBnmea_GPGGA2info\fP (\fBnmeaGPGGA\fP *pack, \fBnmeaINFO\fP *info)"
+.br
+.RI "\fIFill nmeaINFO structure by GGA packet data. \fP"
+.ti -1c
+.RI "void \fBnmea_GPGSA2info\fP (\fBnmeaGPGSA\fP *pack, \fBnmeaINFO\fP *info)"
+.br
+.RI "\fIFill nmeaINFO structure by GSA packet data. \fP"
+.ti -1c
+.RI "void \fBnmea_GPGSV2info\fP (\fBnmeaGPGSV\fP *pack, \fBnmeaINFO\fP *info)"
+.br
+.RI "\fIFill nmeaINFO structure by GSV packet data. \fP"
+.ti -1c
+.RI "void \fBnmea_GPRMC2info\fP (\fBnmeaGPRMC\fP *pack, \fBnmeaINFO\fP *info)"
+.br
+.RI "\fIFill nmeaINFO structure by RMC packet data. \fP"
+.ti -1c
+.RI "void \fBnmea_GPVTG2info\fP (\fBnmeaGPVTG\fP *pack, \fBnmeaINFO\fP *info)"
+.br
+.RI "\fIFill nmeaINFO structure by VTG packet data. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Functions of a low level for analysis of packages of NMEA stream. 
+
+.PP
+.nf
+ ...
+ ptype = nmea_pack_type(
+     (const char *)parser->buffer + nparsed + 1,
+     parser->buff_use - nparsed - 1);
+ 
+ if(0 == (node = malloc(sizeof(nmeaParserNODE))))
+     goto mem_fail;
+ 
+ node->pack = 0;
+ 
+ switch(ptype)
+ {
+ case GPGGA:
+     if(0 == (node->pack = malloc(sizeof(nmeaGPGGA))))
+         goto mem_fail;
+     node->packType = GPGGA;
+     if(!nmea_parse_GPGGA(
+         (const char *)parser->buffer + nparsed,
+         sen_sz, (nmeaGPGGA *)node->pack))
+     {
+         free(node);
+         node = 0;
+     }
+     break;
+ case GPGSA:
+     if(0 == (node->pack = malloc(sizeof(nmeaGPGSA))))
+         goto mem_fail;
+     node->packType = GPGSA;
+     if(!nmea_parse_GPGSA(
+         (const char *)parser->buffer + nparsed,
+         sen_sz, (nmeaGPGSA *)node->pack))
+     {
+         free(node);
+         node = 0;
+     }
+     break;
+ ...
+.fi
+.PP
+ 
+.PP
+Definition in file \fBparse.h\fP.
+.SH "Function Documentation"
+.PP 
+.SS "int nmea_find_tail (const char *buff, intbuff_sz, int *res_crc)"
+.PP
+Find tail of packet ('\\r\\n') in buffer and check control sum (CRC). \fBParameters:\fP
+.RS 4
+\fIbuff\fP a constant character pointer of packets buffer. 
+.br
+\fIbuff_sz\fP buffer size. 
+.br
+\fIres_crc\fP a integer pointer for return CRC of packet (must be defined). 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of bytes to packet tail. 
+.RE
+.PP
+
+.PP
+Definition at line 135 of file parse.c.
+.SS "void nmea_GPGGA2info (\fBnmeaGPGGA\fP *pack, \fBnmeaINFO\fP *info)"
+.PP
+Fill nmeaINFO structure by GGA packet data. \fBParameters:\fP
+.RS 4
+\fIpack\fP a pointer of packet structure. 
+.br
+\fIinfo\fP a pointer of summary information structure. 
+.RE
+.PP
+
+.PP
+Definition at line 375 of file parse.c.
+.SS "void nmea_GPGSA2info (\fBnmeaGPGSA\fP *pack, \fBnmeaINFO\fP *info)"
+.PP
+Fill nmeaINFO structure by GSA packet data. \fBParameters:\fP
+.RS 4
+\fIpack\fP a pointer of packet structure. 
+.br
+\fIinfo\fP a pointer of summary information structure. 
+.RE
+.PP
+
+.PP
+Definition at line 396 of file parse.c.
+.SS "void nmea_GPGSV2info (\fBnmeaGPGSV\fP *pack, \fBnmeaINFO\fP *info)"
+.PP
+Fill nmeaINFO structure by GSV packet data. \fBParameters:\fP
+.RS 4
+\fIpack\fP a pointer of packet structure. 
+.br
+\fIinfo\fP a pointer of summary information structure. 
+.RE
+.PP
+
+.PP
+Definition at line 428 of file parse.c.
+.SS "void nmea_GPRMC2info (\fBnmeaGPRMC\fP *pack, \fBnmeaINFO\fP *info)"
+.PP
+Fill nmeaINFO structure by RMC packet data. \fBParameters:\fP
+.RS 4
+\fIpack\fP a pointer of packet structure. 
+.br
+\fIinfo\fP a pointer of summary information structure. 
+.RE
+.PP
+
+.PP
+Definition at line 463 of file parse.c.
+.SS "void nmea_GPVTG2info (\fBnmeaGPVTG\fP *pack, \fBnmeaINFO\fP *info)"
+.PP
+Fill nmeaINFO structure by VTG packet data. \fBParameters:\fP
+.RS 4
+\fIpack\fP a pointer of packet structure. 
+.br
+\fIinfo\fP a pointer of summary information structure. 
+.RE
+.PP
+
+.PP
+Definition at line 493 of file parse.c.
+.SS "int nmea_pack_type (const char *buff, intbuff_sz)"
+.PP
+Define packet type by header (nmeaPACKTYPE). \fBParameters:\fP
+.RS 4
+\fIbuff\fP a constant character pointer of packet buffer. 
+.br
+\fIbuff_sz\fP buffer size. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The defined packet type 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaPACKTYPE\fP 
+.RE
+.PP
+
+.PP
+Definition at line 100 of file parse.c.
+.SS "int nmea_parse_GPGGA (const char *buff, intbuff_sz, \fBnmeaGPGGA\fP *pack)"
+.PP
+Parse GGA packet from buffer. \fBParameters:\fP
+.RS 4
+\fIbuff\fP a constant character pointer of packet buffer. 
+.br
+\fIbuff_sz\fP buffer size. 
+.br
+\fIpack\fP a pointer of packet which will filled by function. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 (true) - if parsed successfully or 0 (false) - if fail. 
+.RE
+.PP
+
+.PP
+Definition at line 186 of file parse.c.
+.SS "int nmea_parse_GPGSA (const char *buff, intbuff_sz, \fBnmeaGPGSA\fP *pack)"
+.PP
+Parse GSA packet from buffer. \fBParameters:\fP
+.RS 4
+\fIbuff\fP a constant character pointer of packet buffer. 
+.br
+\fIbuff_sz\fP buffer size. 
+.br
+\fIpack\fP a pointer of packet which will filled by function. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 (true) - if parsed successfully or 0 (false) - if fail. 
+.RE
+.PP
+
+.PP
+Definition at line 223 of file parse.c.
+.SS "int nmea_parse_GPGSV (const char *buff, intbuff_sz, \fBnmeaGPGSV\fP *pack)"
+.PP
+Parse GSV packet from buffer. \fBParameters:\fP
+.RS 4
+\fIbuff\fP a constant character pointer of packet buffer. 
+.br
+\fIbuff_sz\fP buffer size. 
+.br
+\fIpack\fP a pointer of packet which will filled by function. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 (true) - if parsed successfully or 0 (false) - if fail. 
+.RE
+.PP
+
+.PP
+Definition at line 252 of file parse.c.
+.SS "int nmea_parse_GPRMC (const char *buff, intbuff_sz, \fBnmeaGPRMC\fP *pack)"
+.PP
+Parse RMC packet from buffer. \fBParameters:\fP
+.RS 4
+\fIbuff\fP a constant character pointer of packet buffer. 
+.br
+\fIbuff_sz\fP buffer size. 
+.br
+\fIpack\fP a pointer of packet which will filled by function. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 (true) - if parsed successfully or 0 (false) - if fail. 
+.RE
+.PP
+
+.PP
+Definition at line 294 of file parse.c.
+.SS "int nmea_parse_GPVTG (const char *buff, intbuff_sz, \fBnmeaGPVTG\fP *pack)"
+.PP
+Parse VTG packet from buffer. \fBParameters:\fP
+.RS 4
+\fIbuff\fP a constant character pointer of packet buffer. 
+.br
+\fIbuff_sz\fP buffer size. 
+.br
+\fIpack\fP a pointer of packet which will filled by function. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+1 (true) - if parsed successfully or 0 (false) - if fail. 
+.RE
+.PP
+
+.PP
+Definition at line 339 of file parse.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

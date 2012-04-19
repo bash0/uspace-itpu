@@ -1,0 +1,187 @@
+.TH "gmath.h" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gmath.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'info.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBNMEA_PI\fP   (3.141592653589793)"
+.br
+.ti -1c
+.RI "#define \fBNMEA_PI180\fP   (NMEA_PI / 180)"
+.br
+.ti -1c
+.RI "#define \fBNMEA_EARTHRADIUS_KM\fP   (6378)"
+.br
+.ti -1c
+.RI "#define \fBNMEA_EARTHRADIUS_M\fP   (NMEA_EARTHRADIUS_KM * 1000)"
+.br
+.ti -1c
+.RI "#define \fBNMEA_EARTH_SEMIMAJORAXIS_M\fP   (6378137.0)"
+.br
+.ti -1c
+.RI "#define \fBNMEA_EARTH_SEMIMAJORAXIS_KM\fP   (NMEA_EARTHMAJORAXIS_KM / 1000)"
+.br
+.ti -1c
+.RI "#define \fBNMEA_EARTH_FLATTENING\fP   (1 / 298.257223563)"
+.br
+.ti -1c
+.RI "#define \fBNMEA_DOP_FACTOR\fP   (5)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBnmea_ndeg2degree\fP (double val)"
+.br
+.RI "\fIConvert NDEG (NMEA degree) to fractional degree. \fP"
+.ti -1c
+.RI "double \fBnmea_degree2ndeg\fP (double val)"
+.br
+.RI "\fIConvert fractional degree to NDEG (NMEA degree) \fP"
+.ti -1c
+.RI "double \fBnmea_calc_pdop\fP (double hdop, double vdop)"
+.br
+.RI "\fICalculate PDOP (Position Dilution Of Precision) factor. \fP"
+.ti -1c
+.RI "void \fBnmea_info2pos\fP (const \fBnmeaINFO\fP *info, \fBnmeaPOS\fP *pos)"
+.br
+.RI "\fIConvert position from INFO to radians position. \fP"
+.ti -1c
+.RI "void \fBnmea_pos2info\fP (const \fBnmeaPOS\fP *pos, \fBnmeaINFO\fP *info)"
+.br
+.RI "\fIConvert radians position to INFOs position. \fP"
+.ti -1c
+.RI "double \fBnmea_distance\fP (const \fBnmeaPOS\fP *from_pos, const \fBnmeaPOS\fP *to_pos)"
+.br
+.RI "\fICalculate distance between two points. \fP"
+.ti -1c
+.RI "double \fBnmea_distance_ellipsoid\fP (const \fBnmeaPOS\fP *from_pos, const \fBnmeaPOS\fP *to_pos, double *from_azimuth, double *to_azimuth)"
+.br
+.RI "\fICalculate distance between two points This function uses an algorithm for an oblate spheroid earth model. The algorithm is described here: http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf. \fP"
+.ti -1c
+.RI "int \fBnmea_move_horz\fP (const \fBnmeaPOS\fP *start_pos, \fBnmeaPOS\fP *end_pos, double azimuth, double distance)"
+.br
+.RI "\fIHorizontal move of point position. \fP"
+.ti -1c
+.RI "int \fBnmea_move_horz_ellipsoid\fP (const \fBnmeaPOS\fP *start_pos, \fBnmeaPOS\fP *end_pos, double azimuth, double distance, double *end_azimuth)"
+.br
+.RI "\fIHorizontal move of point position This function uses an algorithm for an oblate spheroid earth model. The algorithm is described here: http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition in file \fBgmath.h\fP.
+.SH "Define Documentation"
+.PP 
+.SS "#define NMEA_DOP_FACTOR   (5)"Factor for translating DOP to meters 
+.PP
+Definition at line 23 of file gmath.h.
+.SS "#define NMEA_EARTH_FLATTENING   (1 / 298.257223563)"Earth's flattening according WGS 84 
+.PP
+Definition at line 22 of file gmath.h.
+.SS "#define NMEA_EARTH_SEMIMAJORAXIS_KM   (NMEA_EARTHMAJORAXIS_KM / 1000)"Earth's semi-major axis in km according WGS 84 
+.PP
+Definition at line 21 of file gmath.h.
+.SS "#define NMEA_EARTH_SEMIMAJORAXIS_M   (6378137.0)"Earth's semi-major axis in m according WGS84 
+.PP
+Definition at line 20 of file gmath.h.
+.SS "#define NMEA_EARTHRADIUS_KM   (6378)"Earth's mean radius in km 
+.PP
+Definition at line 18 of file gmath.h.
+.SS "#define NMEA_EARTHRADIUS_M   (NMEA_EARTHRADIUS_KM * 1000)"Earth's mean radius in m 
+.PP
+Definition at line 19 of file gmath.h.
+.SS "#define NMEA_PI   (3.141592653589793)"PI value 
+.PP
+Definition at line 16 of file gmath.h.
+.SS "#define NMEA_PI180   (NMEA_PI / 180)"PI division by 180 
+.PP
+Definition at line 17 of file gmath.h.
+.SH "Function Documentation"
+.PP 
+.SS "double nmea_distance (const \fBnmeaPOS\fP *from_pos, const \fBnmeaPOS\fP *to_pos)"
+.PP
+Calculate distance between two points. \fBReturns:\fP
+.RS 4
+Distance in meters 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfrom_pos\fP From position in radians 
+.br
+\fIto_pos\fP To position in radians 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file gmath.c.
+.SS "double nmea_distance_ellipsoid (const \fBnmeaPOS\fP *from_pos, const \fBnmeaPOS\fP *to_pos, double *from_azimuth, double *to_azimuth)"
+.PP
+Calculate distance between two points This function uses an algorithm for an oblate spheroid earth model. The algorithm is described here: http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf. \fBReturns:\fP
+.RS 4
+Distance in meters 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfrom_pos\fP From position in radians 
+.br
+\fIto_pos\fP To position in radians 
+.br
+\fIfrom_azimuth\fP (O) azimuth at 'from' position in radians 
+.br
+\fIto_azimuth\fP (O) azimuth at 'to' position in radians 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file gmath.c.
+.SS "int nmea_move_horz (const \fBnmeaPOS\fP *start_pos, \fBnmeaPOS\fP *end_pos, doubleazimuth, doubledistance)"
+.PP
+Horizontal move of point position. \fBParameters:\fP
+.RS 4
+\fIstart_pos\fP Start position in radians 
+.br
+\fIend_pos\fP Result position in radians 
+.br
+\fIazimuth\fP Azimuth (degree) [0, 359] 
+.br
+\fIdistance\fP Distance (km) 
+.RE
+.PP
+
+.PP
+Definition at line 220 of file gmath.c.
+.SS "int nmea_move_horz_ellipsoid (const \fBnmeaPOS\fP *start_pos, \fBnmeaPOS\fP *end_pos, doubleazimuth, doubledistance, double *end_azimuth)"
+.PP
+Horizontal move of point position This function uses an algorithm for an oblate spheroid earth model. The algorithm is described here: http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf. \fBParameters:\fP
+.RS 4
+\fIstart_pos\fP Start position in radians 
+.br
+\fIend_pos\fP (O) Result position in radians 
+.br
+\fIazimuth\fP Azimuth in radians 
+.br
+\fIdistance\fP Distance (km) 
+.br
+\fIend_azimuth\fP (O) Azimuth at end position in radians 
+.RE
+.PP
+
+.PP
+Definition at line 253 of file gmath.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

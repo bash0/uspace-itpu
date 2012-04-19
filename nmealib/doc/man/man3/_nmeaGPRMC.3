@@ -1,0 +1,91 @@
+.TH "_nmeaGPRMC" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaGPRMC \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sentence.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBnmeaTIME\fP \fButc\fP"
+.br
+.ti -1c
+.RI "char \fBstatus\fP"
+.br
+.ti -1c
+.RI "double \fBlat\fP"
+.br
+.ti -1c
+.RI "char \fBns\fP"
+.br
+.ti -1c
+.RI "double \fBlon\fP"
+.br
+.ti -1c
+.RI "char \fBew\fP"
+.br
+.ti -1c
+.RI "double \fBspeed\fP"
+.br
+.ti -1c
+.RI "double \fBdirection\fP"
+.br
+.ti -1c
+.RI "double \fBdeclination\fP"
+.br
+.ti -1c
+.RI "char \fBdeclin_ew\fP"
+.br
+.ti -1c
+.RI "char \fBmode\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+RMC packet information structure (Recommended Minimum sentence C) 
+.PP
+Definition at line 86 of file sentence.h.
+.SH "Field Documentation"
+.PP 
+.SS "char \fB_nmeaGPRMC::declin_ew\fP"[E]ast or [W]est 
+.PP
+Definition at line 97 of file sentence.h.
+.SS "double \fB_nmeaGPRMC::declination\fP"Magnetic variation degrees (Easterly var. subtracts from true course) 
+.PP
+Definition at line 96 of file sentence.h.
+.SS "double \fB_nmeaGPRMC::direction\fP"Track angle in degrees True 
+.PP
+Definition at line 95 of file sentence.h.
+.SS "char \fB_nmeaGPRMC::ew\fP"[E]ast or [W]est 
+.PP
+Definition at line 93 of file sentence.h.
+.SS "double \fB_nmeaGPRMC::lat\fP"Latitude in NDEG - [degree][min].[sec/60] 
+.PP
+Definition at line 90 of file sentence.h.
+.SS "double \fB_nmeaGPRMC::lon\fP"Longitude in NDEG - [degree][min].[sec/60] 
+.PP
+Definition at line 92 of file sentence.h.
+.SS "char \fB_nmeaGPRMC::mode\fP"Mode indicator of fix type (A = autonomous, D = differential, E = estimated, N = not valid, S = simulator) 
+.PP
+Definition at line 98 of file sentence.h.
+.SS "char \fB_nmeaGPRMC::ns\fP"[N]orth or [S]outh 
+.PP
+Definition at line 91 of file sentence.h.
+.SS "double \fB_nmeaGPRMC::speed\fP"Speed over the ground in knots 
+.PP
+Definition at line 94 of file sentence.h.
+.SS "char \fB_nmeaGPRMC::status\fP"Status (A = active or V = void) 
+.PP
+Definition at line 89 of file sentence.h.
+.SS "\fBnmeaTIME\fP \fB_nmeaGPRMC::utc\fP"UTC of position 
+.PP
+Definition at line 88 of file sentence.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

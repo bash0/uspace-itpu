@@ -1,0 +1,73 @@
+.TH "_nmeaGPVTG" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaGPVTG \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sentence.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "double \fBdir\fP"
+.br
+.ti -1c
+.RI "char \fBdir_t\fP"
+.br
+.ti -1c
+.RI "double \fBdec\fP"
+.br
+.ti -1c
+.RI "char \fBdec_m\fP"
+.br
+.ti -1c
+.RI "double \fBspn\fP"
+.br
+.ti -1c
+.RI "char \fBspn_n\fP"
+.br
+.ti -1c
+.RI "double \fBspk\fP"
+.br
+.ti -1c
+.RI "char \fBspk_k\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+VTG packet information structure (Track made good and ground speed) 
+.PP
+Definition at line 105 of file sentence.h.
+.SH "Field Documentation"
+.PP 
+.SS "double \fB_nmeaGPVTG::dec\fP"Magnetic track made good 
+.PP
+Definition at line 109 of file sentence.h.
+.SS "char \fB_nmeaGPVTG::dec_m\fP"Fixed text 'M' 
+.PP
+Definition at line 110 of file sentence.h.
+.SS "double \fB_nmeaGPVTG::dir\fP"True track made good (degrees) 
+.PP
+Definition at line 107 of file sentence.h.
+.SS "char \fB_nmeaGPVTG::dir_t\fP"Fixed text 'T' indicates that track made good is relative to true north 
+.PP
+Definition at line 108 of file sentence.h.
+.SS "double \fB_nmeaGPVTG::spk\fP"Ground speed, kilometers per hour 
+.PP
+Definition at line 113 of file sentence.h.
+.SS "char \fB_nmeaGPVTG::spk_k\fP"Fixed text 'K' indicates that speed over ground is in kilometers/hour 
+.PP
+Definition at line 114 of file sentence.h.
+.SS "double \fB_nmeaGPVTG::spn\fP"Ground speed, knots 
+.PP
+Definition at line 111 of file sentence.h.
+.SS "char \fB_nmeaGPVTG::spn_n\fP"Fixed text 'N' indicates that speed over ground is in knots 
+.PP
+Definition at line 112 of file sentence.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

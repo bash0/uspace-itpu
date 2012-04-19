@@ -1,0 +1,43 @@
+.TH "tok.h" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tok.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'config.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBnmea_calc_crc\fP (const char *buff, int buff_sz)"
+.br
+.RI "\fICalculate control sum of binary buffer. \fP"
+.ti -1c
+.RI "int \fBnmea_atoi\fP (const char *str, int str_sz, int radix)"
+.br
+.RI "\fIConvert string to number. \fP"
+.ti -1c
+.RI "double \fBnmea_atof\fP (const char *str, int str_sz)"
+.br
+.RI "\fIConvert string to fraction number. \fP"
+.ti -1c
+.RI "int \fBnmea_printf\fP (char *buff, int buff_sz, const char *format,...)"
+.br
+.RI "\fIFormating string (like standart printf) with CRC tail (*CRC) \fP"
+.ti -1c
+.RI "int \fBnmea_scanf\fP (const char *buff, int buff_sz, const char *format,...)"
+.br
+.RI "\fIAnalyse string (specificate for NMEA sentences) \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition in file \fBtok.h\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

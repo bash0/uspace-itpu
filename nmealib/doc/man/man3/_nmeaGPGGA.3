@@ -1,0 +1,109 @@
+.TH "_nmeaGPGGA" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaGPGGA \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sentence.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBnmeaTIME\fP \fButc\fP"
+.br
+.ti -1c
+.RI "double \fBlat\fP"
+.br
+.ti -1c
+.RI "char \fBns\fP"
+.br
+.ti -1c
+.RI "double \fBlon\fP"
+.br
+.ti -1c
+.RI "char \fBew\fP"
+.br
+.ti -1c
+.RI "int \fBsig\fP"
+.br
+.ti -1c
+.RI "int \fBsatinuse\fP"
+.br
+.ti -1c
+.RI "double \fBHDOP\fP"
+.br
+.ti -1c
+.RI "double \fBelv\fP"
+.br
+.ti -1c
+.RI "char \fBelv_units\fP"
+.br
+.ti -1c
+.RI "double \fBdiff\fP"
+.br
+.ti -1c
+.RI "char \fBdiff_units\fP"
+.br
+.ti -1c
+.RI "double \fBdgps_age\fP"
+.br
+.ti -1c
+.RI "int \fBdgps_sid\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+GGA packet information structure (Global Positioning System Fix Data) 
+.PP
+Definition at line 38 of file sentence.h.
+.SH "Field Documentation"
+.PP 
+.SS "double \fB_nmeaGPGGA::dgps_age\fP"Time in seconds since last DGPS update 
+.PP
+Definition at line 52 of file sentence.h.
+.SS "int \fB_nmeaGPGGA::dgps_sid\fP"DGPS station ID number 
+.PP
+Definition at line 53 of file sentence.h.
+.SS "double \fB_nmeaGPGGA::diff\fP"Geoidal separation (Diff. between WGS-84 earth ellipsoid and mean sea level. '-' = geoid is below WGS-84 ellipsoid) 
+.PP
+Definition at line 50 of file sentence.h.
+.SS "char \fB_nmeaGPGGA::diff_units\fP"[M]eters (Units of geoidal separation) 
+.PP
+Definition at line 51 of file sentence.h.
+.SS "double \fB_nmeaGPGGA::elv\fP"Antenna altitude above/below mean sea level (geoid) 
+.PP
+Definition at line 48 of file sentence.h.
+.SS "char \fB_nmeaGPGGA::elv_units\fP"[M]eters (Antenna height unit) 
+.PP
+Definition at line 49 of file sentence.h.
+.SS "char \fB_nmeaGPGGA::ew\fP"[E]ast or [W]est 
+.PP
+Definition at line 44 of file sentence.h.
+.SS "double \fB_nmeaGPGGA::HDOP\fP"Horizontal dilution of precision 
+.PP
+Definition at line 47 of file sentence.h.
+.SS "double \fB_nmeaGPGGA::lat\fP"Latitude in NDEG - [degree][min].[sec/60] 
+.PP
+Definition at line 41 of file sentence.h.
+.SS "double \fB_nmeaGPGGA::lon\fP"Longitude in NDEG - [degree][min].[sec/60] 
+.PP
+Definition at line 43 of file sentence.h.
+.SS "char \fB_nmeaGPGGA::ns\fP"[N]orth or [S]outh 
+.PP
+Definition at line 42 of file sentence.h.
+.SS "int \fB_nmeaGPGGA::satinuse\fP"Number of satellites in use (not those in view) 
+.PP
+Definition at line 46 of file sentence.h.
+.SS "int \fB_nmeaGPGGA::sig\fP"GPS quality indicator (0 = Invalid; 1 = Fix; 2 = Differential, 3 = Sensitive) 
+.PP
+Definition at line 45 of file sentence.h.
+.SS "\fBnmeaTIME\fP \fB_nmeaGPGGA::utc\fP"UTC of position (just time) 
+.PP
+Definition at line 40 of file sentence.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

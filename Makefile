@@ -28,6 +28,9 @@ LDFLAGS  = -lncurses
 all: $(BINDIR)/$(APP)
 
 $(BINDIR)/$(APP): buildrepo $(OBJS)
+	@echo "Building NMEA-Library"
+	@cd nmealib; make
+	@echo "done"
 	@mkdir -p `dirname $@`
 	@echo "Linking $@..."
 	@echo $(CC) $(OBJS) $(LDFLAGS) -o $@
@@ -41,10 +44,14 @@ $(OBJDIR)/%.o: %.$(SRCEXT)
 	@$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	$(RM) -r $(OBJDIR)
+	@echo "Cleaning itpu..."
+	@$(RM) -r $(OBJDIR)
+	@$(RM) -r $(BINDIR)
 
 distclean: clean
-	$(RM) -r $(BINDIR)
+	@echo "Cleaning NMEA-lib..."
+	@cd nmealib; make clean;
+	
 
 buildrepo:
 	@$(call make-repo)
@@ -66,21 +73,3 @@ define make-depend
         $(CFLAGS) \
         $1
 endef
-
-# 
-# BIN = itpu
-# SRC = $(OBJ:%.o=%.c)
-# INCLUDES =
-# 
-# CFLAGS = -Wall -g
-# LDFLAGS = -lncurses
-# 
-# $(BIN): $(SRC)
-#       gcc $(CFLAGS) -o $(BIN) $(SRC) $(LDFLAGS)
-# 
-# %.o: %.c
-#         $(CC) $(CFLAGS) -c $<
-#       
-# .PHONY: clean
-# clean:
-#       rm -rf $(BIN) $(SRC)

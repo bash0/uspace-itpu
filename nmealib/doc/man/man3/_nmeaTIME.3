@@ -1,0 +1,74 @@
+.TH "_nmeaTIME" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaTIME \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <time.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fByear\fP"
+.br
+.ti -1c
+.RI "int \fBmon\fP"
+.br
+.ti -1c
+.RI "int \fBday\fP"
+.br
+.ti -1c
+.RI "int \fBhour\fP"
+.br
+.ti -1c
+.RI "int \fBmin\fP"
+.br
+.ti -1c
+.RI "int \fBsec\fP"
+.br
+.ti -1c
+.RI "int \fBhsec\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Date and time data 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmea_time_now\fP 
+.RE
+.PP
+
+.PP
+Definition at line 26 of file time.h.
+.SH "Field Documentation"
+.PP 
+.SS "int \fB_nmeaTIME::day\fP"Day of the month - [1,31] 
+.PP
+Definition at line 30 of file time.h.
+.SS "int \fB_nmeaTIME::hour\fP"Hours since midnight - [0,23] 
+.PP
+Definition at line 31 of file time.h.
+.SS "int \fB_nmeaTIME::hsec\fP"Hundredth part of second - [0,99] 
+.PP
+Definition at line 34 of file time.h.
+.SS "int \fB_nmeaTIME::min\fP"Minutes after the hour - [0,59] 
+.PP
+Definition at line 32 of file time.h.
+.SS "int \fB_nmeaTIME::mon\fP"Months since January - [0,11] 
+.PP
+Definition at line 29 of file time.h.
+.SS "int \fB_nmeaTIME::sec\fP"Seconds after the minute - [0,59] 
+.PP
+Definition at line 33 of file time.h.
+.SS "int \fB_nmeaTIME::year\fP"Years since 1900 
+.PP
+Definition at line 28 of file time.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

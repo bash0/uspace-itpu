@@ -1,0 +1,175 @@
+.TH "parser.h" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+parser.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'info.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBnmea_parser_init\fP (nmeaPARSER *parser)"
+.br
+.RI "\fIInitialization of parser object. \fP"
+.ti -1c
+.RI "void \fBnmea_parser_destroy\fP (nmeaPARSER *parser)"
+.br
+.RI "\fIDestroy parser object. \fP"
+.ti -1c
+.RI "int \fBnmea_parse\fP (nmeaPARSER *parser, const char *buff, int buff_sz, \fBnmeaINFO\fP *info)"
+.br
+.RI "\fIAnalysis of buffer and put results to information structure. \fP"
+.ti -1c
+.RI "int \fBnmea_parser_push\fP (nmeaPARSER *parser, const char *buff, int buff_sz)"
+.br
+.RI "\fIAnalysis of buffer and keep results into parser. \fP"
+.ti -1c
+.RI "int \fBnmea_parser_top\fP (nmeaPARSER *parser)"
+.br
+.RI "\fIGet type of top packet keeped into parser. \fP"
+.ti -1c
+.RI "int \fBnmea_parser_pop\fP (nmeaPARSER *parser, void **pack_ptr)"
+.br
+.RI "\fIWithdraw top packet from parser. \fP"
+.ti -1c
+.RI "int \fBnmea_parser_peek\fP (nmeaPARSER *parser, void **pack_ptr)"
+.br
+.RI "\fIGet top packet from parser without withdraw. \fP"
+.ti -1c
+.RI "int \fBnmea_parser_drop\fP (nmeaPARSER *parser)"
+.br
+.RI "\fIDelete top packet from parser. \fP"
+.ti -1c
+.RI "int \fBnmea_parser_buff_clear\fP (nmeaPARSER *parser)"
+.br
+.RI "\fIClear cache of parser. \fP"
+.ti -1c
+.RI "int \fBnmea_parser_queue_clear\fP (nmeaPARSER *parser)"
+.br
+.RI "\fIClear packets queue into parser. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition in file \fBparser.h\fP.
+.SH "Function Documentation"
+.PP 
+.SS "int nmea_parse (nmeaPARSER *parser, const char *buff, intbuff_sz, \fBnmeaINFO\fP *info)"
+.PP
+Analysis of buffer and put results to information structure. \fBReturns:\fP
+.RS 4
+Number of packets wos parsed 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file parser.c.
+.SS "int nmea_parser_buff_clear (nmeaPARSER *parser)"
+.PP
+Clear cache of parser. \fBReturns:\fP
+.RS 4
+true (1) - success 
+.RE
+.PP
+
+.PP
+Definition at line 384 of file parser.c.
+.SS "int nmea_parser_drop (nmeaPARSER *parser)"
+.PP
+Delete top packet from parser. \fBReturns:\fP
+.RS 4
+Deleted packet type 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaPACKTYPE\fP 
+.RE
+.PP
+
+.PP
+Definition at line 359 of file parser.c.
+.SS "int nmea_parser_init (nmeaPARSER *parser)"
+.PP
+Initialization of parser object. \fBReturns:\fP
+.RS 4
+true (1) - success or false (0) - fail 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file parser.c.
+.SS "int nmea_parser_peek (nmeaPARSER *parser, void **pack_ptr)"
+.PP
+Get top packet from parser without withdraw. \fBReturns:\fP
+.RS 4
+Received packet type 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaPACKTYPE\fP 
+.RE
+.PP
+
+.PP
+Definition at line 338 of file parser.c.
+.SS "int nmea_parser_pop (nmeaPARSER *parser, void **pack_ptr)"
+.PP
+Withdraw top packet from parser. \fBReturns:\fP
+.RS 4
+Received packet type 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaPACKTYPE\fP 
+.RE
+.PP
+
+.PP
+Definition at line 313 of file parser.c.
+.SS "int nmea_parser_push (nmeaPARSER *parser, const char *buff, intbuff_sz)"
+.PP
+Analysis of buffer and keep results into parser. \fBReturns:\fP
+.RS 4
+Number of bytes wos parsed from buffer 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file parser.c.
+.SS "int nmea_parser_queue_clear (nmeaPARSER *parser)"
+.PP
+Clear packets queue into parser. \fBReturns:\fP
+.RS 4
+true (1) - success 
+.RE
+.PP
+
+.PP
+Definition at line 395 of file parser.c.
+.SS "int nmea_parser_top (nmeaPARSER *parser)"
+.PP
+Get type of top packet keeped into parser. \fBReturns:\fP
+.RS 4
+Type of packet 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaPACKTYPE\fP 
+.RE
+.PP
+
+.PP
+Definition at line 295 of file parser.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

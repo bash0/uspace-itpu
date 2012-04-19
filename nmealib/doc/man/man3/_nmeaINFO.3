@@ -1,0 +1,118 @@
+.TH "_nmeaINFO" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaINFO \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <info.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBsmask\fP"
+.br
+.ti -1c
+.RI "\fBnmeaTIME\fP \fButc\fP"
+.br
+.ti -1c
+.RI "int \fBsig\fP"
+.br
+.ti -1c
+.RI "int \fBfix\fP"
+.br
+.ti -1c
+.RI "double \fBPDOP\fP"
+.br
+.ti -1c
+.RI "double \fBHDOP\fP"
+.br
+.ti -1c
+.RI "double \fBVDOP\fP"
+.br
+.ti -1c
+.RI "double \fBlat\fP"
+.br
+.ti -1c
+.RI "double \fBlon\fP"
+.br
+.ti -1c
+.RI "double \fBelv\fP"
+.br
+.ti -1c
+.RI "double \fBspeed\fP"
+.br
+.ti -1c
+.RI "double \fBdirection\fP"
+.br
+.ti -1c
+.RI "double \fBdeclination\fP"
+.br
+.ti -1c
+.RI "\fBnmeaSATINFO\fP \fBsatinfo\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Summary GPS information from all parsed packets, used also for generating NMEA stream 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmea_parse\fP 
+.PP
+\fBnmea_GPGGA2info\fP, nmea_...2info 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file info.h.
+.SH "Field Documentation"
+.PP 
+.SS "double \fB_nmeaINFO::declination\fP"Magnetic variation degrees (Easterly var. subtracts from true course) 
+.PP
+Definition at line 100 of file info.h.
+.SS "double \fB_nmeaINFO::direction\fP"Track angle in degrees True 
+.PP
+Definition at line 99 of file info.h.
+.SS "double \fB_nmeaINFO::elv\fP"Antenna altitude above/below mean sea level (geoid) in meters 
+.PP
+Definition at line 97 of file info.h.
+.SS "int \fB_nmeaINFO::fix\fP"Operating mode, used for navigation (1 = Fix not available; 2 = 2D; 3 = 3D) 
+.PP
+Definition at line 89 of file info.h.
+.SS "double \fB_nmeaINFO::HDOP\fP"Horizontal Dilution Of Precision 
+.PP
+Definition at line 92 of file info.h.
+.SS "double \fB_nmeaINFO::lat\fP"Latitude in NDEG - +/-[degree][min].[sec/60] 
+.PP
+Definition at line 95 of file info.h.
+.SS "double \fB_nmeaINFO::lon\fP"Longitude in NDEG - +/-[degree][min].[sec/60] 
+.PP
+Definition at line 96 of file info.h.
+.SS "double \fB_nmeaINFO::PDOP\fP"Position Dilution Of Precision 
+.PP
+Definition at line 91 of file info.h.
+.SS "\fBnmeaSATINFO\fP \fB_nmeaINFO::satinfo\fP"Satellites information 
+.PP
+Definition at line 102 of file info.h.
+.SS "int \fB_nmeaINFO::sig\fP"GPS quality indicator (0 = Invalid; 1 = Fix; 2 = Differential, 3 = Sensitive) 
+.PP
+Definition at line 88 of file info.h.
+.SS "int \fB_nmeaINFO::smask\fP"Mask specifying types of packages from which data have been obtained 
+.PP
+Definition at line 84 of file info.h.
+.SS "double \fB_nmeaINFO::speed\fP"Speed over the ground in kilometers/hour 
+.PP
+Definition at line 98 of file info.h.
+.SS "\fBnmeaTIME\fP \fB_nmeaINFO::utc\fP"UTC of position 
+.PP
+Definition at line 86 of file info.h.
+.SS "double \fB_nmeaINFO::VDOP\fP"Vertical Dilution Of Precision 
+.PP
+Definition at line 93 of file info.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

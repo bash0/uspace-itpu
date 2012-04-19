@@ -1,0 +1,77 @@
+[OPTIONS]
+Compiled file=nmealib.chm
+Compatibility=1.1
+Full-text search=Yes
+Contents file=index.hhc
+Default Window=main
+Default topic=index.html
+Index file=index.hhk
+Language=0x409 English (United States)
+Title=NMEA
+
+[WINDOWS]
+main="NMEA","index.hhc","index.hhk","index.html","index.html",,,,,0x23520,,0x10387e,,,,,,,,0
+
+[FILES]
+index.html
+config_8h_source.html
+context_8c_source.html
+context_8h_source.html
+generate_8c_source.html
+generate_8h_source.html
+generator_8c_source.html
+generator_8h_source.html
+gmath_8c_source.html
+gmath_8h_source.html
+info_8c_source.html
+info_8h_source.html
+nmea_8h_source.html
+parse_8c_source.html
+parse_8h_source.html
+parser_8c_source.html
+parser_8h_source.html
+sentence_8c_source.html
+sentence_8h_source.html
+time_8c_source.html
+time_8h_source.html
+tok_8c_source.html
+tok_8h_source.html
+units_8h_source.html
+gmath_8h.html
+info_8h.html
+parse_8h.html
+parser_8h.html
+sentence_8h.html
+time_8h.html
+tok_8h.html
+annotated.html
+classes.html
+functions.html
+functions_vars.html
+struct__nmea_g_p_g_g_a.html
+struct__nmea_g_p_g_s_a.html
+struct__nmea_g_p_g_s_v.html
+struct__nmea_g_p_r_m_c.html
+struct__nmea_g_p_v_t_g.html
+struct__nmea_i_n_f_o.html
+struct__nmea_p_o_s.html
+struct__nmea_s_a_t_e_l_l_i_t_e.html
+struct__nmea_s_a_t_i_n_f_o.html
+struct__nmea_t_i_m_e.html
+files.html
+globals.html
+globals_func.html
+globals_type.html
+globals_enum.html
+globals_eval.html
+globals_defs.html
+tab_a.png
+tab_b.png
+tab_h.png
+tab_s.png
+nav_h.png
+nav_f.png
+bc_s.png
+doxygen.png
+closed.png
+open.png

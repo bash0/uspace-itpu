@@ -1,0 +1,64 @@
+.TH "_nmeaSATELLITE" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaSATELLITE \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <info.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBid\fP"
+.br
+.ti -1c
+.RI "int \fBin_use\fP"
+.br
+.ti -1c
+.RI "int \fBelv\fP"
+.br
+.ti -1c
+.RI "int \fBazimuth\fP"
+.br
+.ti -1c
+.RI "int \fBsig\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Information about satellite 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaSATINFO\fP 
+.PP
+\fBnmeaGPGSV\fP 
+.RE
+.PP
+
+.PP
+Definition at line 53 of file info.h.
+.SH "Field Documentation"
+.PP 
+.SS "int \fB_nmeaSATELLITE::azimuth\fP"Azimuth, degrees from true north, 000 to 359 
+.PP
+Definition at line 58 of file info.h.
+.SS "int \fB_nmeaSATELLITE::elv\fP"Elevation in degrees, 90 maximum 
+.PP
+Definition at line 57 of file info.h.
+.SS "int \fB_nmeaSATELLITE::id\fP"Satellite PRN number 
+.PP
+Definition at line 55 of file info.h.
+.SS "int \fB_nmeaSATELLITE::in_use\fP"Used in position fix 
+.PP
+Definition at line 56 of file info.h.
+.SS "int \fB_nmeaSATELLITE::sig\fP"Signal, 00-99 dB 
+.PP
+Definition at line 59 of file info.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.

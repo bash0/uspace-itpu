@@ -1,0 +1,52 @@
+.TH "_nmeaSATINFO" 3 "Fri Apr 13 2012" "Version 0.5.3" "NMEA" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_nmeaSATINFO \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <info.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBinuse\fP"
+.br
+.ti -1c
+.RI "int \fBinview\fP"
+.br
+.ti -1c
+.RI "\fBnmeaSATELLITE\fP \fBsat\fP [NMEA_MAXSAT]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Information about all satellites in view 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBnmeaINFO\fP 
+.PP
+\fBnmeaGPGSV\fP 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file info.h.
+.SH "Field Documentation"
+.PP 
+.SS "int \fB_nmeaSATINFO::inuse\fP"Number of satellites in use (not those in view) 
+.PP
+Definition at line 70 of file info.h.
+.SS "int \fB_nmeaSATINFO::inview\fP"Total number of satellites in view 
+.PP
+Definition at line 71 of file info.h.
+.SS "\fBnmeaSATELLITE\fP \fB_nmeaSATINFO::sat\fP[NMEA_MAXSAT]"Satellites information 
+.PP
+Definition at line 72 of file info.h.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for NMEA from the source code.
