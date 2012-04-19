@@ -12,10 +12,14 @@ SRCDIRS := $(shell find . -name '*.$(SRCEXT)' -exec dirname {} \; | uniq)
 OBJS    := $(patsubst %.$(SRCEXT),$(OBJDIR)/%.o,$(SRCS))
 
 DEBUG    = -g
-INCLUDES =
+# maybe INCLUDES = -I../nmealib/include/nmea
+INCLUDES = -I../nmealib/include
+
 # CFLAGS   = -Wall -pedantic -c $(DEBUG) $(INCLUDES)
 CFLAGS   = -Wall -c $(DEBUG) $(INCLUDES)
-LDFLAGS  = -lncurses
+
+#Its a static library so maybe different l-option? <-- check
+LDFLAGS  = -lncurses -L../nmealib/lib -lnmea
 
 # ifeq ($(SRCEXT), cpp)
 # CC       = $(CXX)
