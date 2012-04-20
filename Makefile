@@ -15,10 +15,10 @@ DEBUG    = -g
 INCLUDES = -I./nmealib/include
 
 # CFLAGS   = -Wall -ped6antic -c $(DEBUG) $(INCLUDES)
-CFLAGS   = -Wall -c $(DEBUG) $(INCLUDES)
+CFLAGS   = $(INCLUDES) -Wall -c $(DEBUG)
 
 #Its a static library so maybe different l-option? <-- check
-LDFLAGS  = -lncurses -L./nmealib/lib -lnmea
+LDFLAGS  = -lncurses -L./nmealib/lib -lnmea -lm
 
 ifeq ($(SRCEXT), cpp)
 CC       = $(CXX)

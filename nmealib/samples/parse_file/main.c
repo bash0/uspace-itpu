@@ -11,7 +11,7 @@ void trace(const char *str, int str_size)
 {
     printf("Trace: ");
     write(1, str, str_size);
-    printf("\n");
+    printf("\nend\n");
 }
 void error(const char *str, int str_size)
 {
@@ -34,8 +34,8 @@ int main()
     if(!file)
         return -1;
 
-    nmea_property()->trace_func = &trace;
-    nmea_property()->error_func = &error;
+//     nmea_property()->trace_func = &trace;
+//     nmea_property()->error_func = &error;
 
     nmea_zero_INFO(&info);
     nmea_parser_init(&parser);

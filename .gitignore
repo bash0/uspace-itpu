@@ -16,3 +16,4 @@ obj/
 *.lot
 .DS_Store
 *.run.xml
+*.a
