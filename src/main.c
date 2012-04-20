@@ -6,20 +6,6 @@
 #include <time.h>
 #include <stdio.h>
 
-void htrace(const char *str, int str_size)
-{
-    printf("Trace: ");
-    write(1, str, str_size);
-    printf("\n");
-}
-void error(const char *str, int str_size)
-{
-    printf("Error: ");
-    write(1, str, str_size);
-    printf("\n");
-}
-
-
 /*
  *  stup of a main function to display formatted sensor data to test sensor interface
  */
@@ -32,7 +18,7 @@ int main()
       FILE *file;
       char buff[2048];
       int size;
-      printf("ksdlfj");
+      
       file = fopen("gpslog.txt", "rb");
       
        if(!file)
