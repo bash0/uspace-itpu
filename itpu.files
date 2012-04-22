@@ -126,3 +126,5 @@ obj/src/main.d
 obj/src/main.o
 src/gpslog.txt
 src/main.c
+include/threads.h
+src/threads.c

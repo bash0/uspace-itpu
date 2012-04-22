@@ -12,13 +12,13 @@ OBJS    := $(patsubst %.$(SRCEXT),$(OBJDIR)/%.o,$(SRCS))
 
 DEBUG    = -g
 # maybe INCLUDES = -I../nmealib/include/nmea
-INCLUDES = -I./nmealib/include
+INCLUDES = -I./nmealib/include -I./include
 
 # CFLAGS   = -Wall -ped6antic -c $(DEBUG) $(INCLUDES)
 CFLAGS   = $(INCLUDES) -Wall -c $(DEBUG)
 
 #Its a static library so maybe different l-option? <-- check
-LDFLAGS  = -lncurses -L./nmealib/lib -lnmea -lm
+LDFLAGS  = -lncurses -L./nmealib/lib -lnmea -lm -pthread
 
 ifeq ($(SRCEXT), cpp)
 CC       = $(CXX)
