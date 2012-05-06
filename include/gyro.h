@@ -16,7 +16,7 @@
 #define ITG3200_GYRO_ZOUT_L 0x22
 #define ITG3200_READ_START	ITG3200_GYRO_XOUT_H
 #define ITG3200_PWR_MGM 	0x3E
-#define ITG3200_I2C_ADDRESS 0x69
+#define ITG3200_I2C_ADDRESS 0b01101000 //pin 9 is low
 
 int init_gyro();
 

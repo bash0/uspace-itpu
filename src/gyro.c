@@ -1,5 +1,11 @@
+#include <gyro.h>
+
 #include <stdio.h>
 #include <fcntl.h>
+#include <sys/ioctl.h>
+#include <linux/i2c-dev.h>
+#include <unistd.h>
+// #include <stdlib.h>
 
 int init_gyro()
 {
@@ -12,7 +18,7 @@ int init_gyro()
     }
     else
     {
-        fcntl(fd, F_SETFL, 0); //what does that??
+        //fcntl(fgyro, F_SETFL, 0); //what does that??
 
         if (ioctl(fgyro, I2C_SLAVE, ITG3200_I2C_ADDRESS) < 0)
         {
@@ -36,6 +42,7 @@ int init_gyro()
             perror("Failed to write to gyro\n");
             return 0; //0 == error
         }
-        printf("Got whoami register\nHex: %x\nBin: %b", whoami, whoami);
+        printf("Got whoami register: %x\n", whoami);
         return 1;  //1 == success
+    }
 }

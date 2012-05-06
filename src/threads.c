@@ -63,7 +63,6 @@ void * thread_SensorFusion()
     if (init_gyro())
     {
         make_periodic (500000, &info);
-        char buffer[512];
         while(1)
         {
            //do nothing
@@ -88,7 +87,10 @@ void * thread_getGPS()
     //initialize a serial port to GPS antenna
     int fd = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
     if (fd == -1)
+    {
         perror("open_port: Unable to open /dev/ttyS0 -\n");
+        exit(1);
+    }
     else
     {
         fcntl(fd, F_SETFL, 0); //what does that??
