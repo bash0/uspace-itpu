@@ -128,3 +128,5 @@ src/gpslog.txt
 src/main.c
 include/threads.h
 src/threads.c
+include/gyro.h
+src/gyro.c

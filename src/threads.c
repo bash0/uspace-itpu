@@ -1,5 +1,6 @@
 #include <threads.h>
 #include <nmea/nmea.h>
+#include <gyro.h>
 
 #include <unistd.h>
 #include <sys/time.h>
@@ -51,6 +52,28 @@ void * thread_DisplayValues()
         refresh(); //update ncurses window
         erase();
         wait_period(&info);
+    }
+}
+
+void * thread_SensorFusion()
+{
+
+    struct periodic_info info;
+
+    if (init_gyro())
+    {
+        make_periodic (500000, &info);
+        char buffer[512];
+        while(1)
+        {
+           //do nothing
+           wait_period(&info);
+        }
+    }
+    else
+    {
+        perror("i2c-init failed\n");
+        exit(1);
     }
 }
 
