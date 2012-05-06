@@ -28,7 +28,7 @@ int main()
       pthread_t t_1;
       pthread_t t_2;
 
-      pthread_create (&t_1, NULL, thread_SensorFusion, NULL) ;
+      pthread_create (&t_1, NULL, thread_getGPS, NULL) ;
       pthread_create (&t_2, NULL, thread_DisplayValues, NULL) ;
 
        pthread_join (t_1, NULL);

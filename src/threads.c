@@ -9,9 +9,12 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <ncurses.h>
+#include <math.h>
 
 extern nmeaINFO gpsInfo;
 extern nmeaPARSER parser;
+
+
 
 struct periodic_info
 {
@@ -44,20 +47,23 @@ void * thread_DisplayValues()
         printw("Magnetometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
         printw("Accelerometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
         printw("Gyroscope:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
-        printw("GPS:\t\t Long.:\t%f\tLat.:\t%f\tAlt.:\t%f\n", dpos.lat, dpos.lon, gpsInfo.elv);
+        printw("GPS:\t\t Long.:\t%f\tLat.:\t%f\tAlt.:\t%f\n", 180*dpos.lat/M_PI, 180*dpos.lon/M_PI, gpsInfo.elv);
         refresh(); //update ncurses window
         erase();
         wait_period(&info);
     }
 }
 
-void * thread_SensorFusion()
+void * thread_getGPS()
 {
 
+    /*
+      maybe put the functionality of the serial line in an own function within an own module?
+      */
     struct periodic_info info;
 
     //initialize a serial port to GPS antenna
-    int fd = open("/dev/pts/3", O_RDWR | O_NOCTTY | O_NDELAY);
+    int fd = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
     if (fd == -1)
         perror("open_port: Unable to open /dev/ttyS0 -\n");
     else
