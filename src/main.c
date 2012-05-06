@@ -10,6 +10,7 @@
 
 nmeaINFO gpsInfo;
 nmeaPARSER parser;
+float gyro_xyz[3];
 
 /*
  *  stup of a main function to display formatted sensor data to test sensor interface

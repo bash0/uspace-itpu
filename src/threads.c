@@ -14,6 +14,7 @@
 
 extern nmeaINFO gpsInfo;
 extern nmeaPARSER parser;
+extern float gyro_xyz[3];
 
 
 
@@ -47,7 +48,7 @@ void * thread_DisplayValues()
         printw("%ld s\n\n", currentTime );
         printw("Magnetometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
         printw("Accelerometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
-        printw("Gyroscope:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
+        printw("Gyroscope:\t X:\t%d\tY:\t%d\tZ:\t%d\n", gyro_xyz[0], gyro_xyz[1], gyro_xyz[2]);
         printw("GPS:\t\t Long.:\t%f\tLat.:\t%f\tAlt.:\t%f\n", 180*dpos.lat/M_PI, 180*dpos.lon/M_PI, gpsInfo.elv);
         refresh(); //update ncurses window
         erase();
@@ -60,12 +61,13 @@ void * thread_SensorFusion()
 
     struct periodic_info info;
 
-    if (init_gyro())
+    if (itg3200_init())
+    if (itg3200_calibrate_gyro())
     {
         make_periodic (500000, &info);
         while(1)
         {
-           //do nothing
+           itg3200_read_rad(gyro_xyz);
            wait_period(&info);
         }
     }
