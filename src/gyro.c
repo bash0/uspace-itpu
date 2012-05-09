@@ -17,7 +17,7 @@ float xyz_gyro_offset[3] = {0.0, 0.0, 0.0};
 
 int itg3200_init()
 {
-    //initialize a serial port to GPS antenna
+    //initialize i2c-device antenna
     fgyro = open("/dev/i2c-2", O_RDWR | O_NOCTTY | O_NDELAY); //check which i2c
 //    int fgyro = open("/dev/i2c-2", O_RDWR); //check which i2c
     if (fgyro == -1)
