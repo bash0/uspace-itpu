@@ -130,3 +130,5 @@ include/threads.h
 src/threads.c
 include/gyro.h
 src/gyro.c
+include/acc_mag.h
+src/acc_mag.c
