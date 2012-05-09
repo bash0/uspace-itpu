@@ -58,6 +58,13 @@ int itg3200_init()
 
 int itg3200_read_raw(int xyz_raw[3])
 {
+    int8_t readRegister = ITG3200_GYRO_XOUT_H;
+    if (write(fgyro, &readRegister, 1) != 1)
+    {
+        printf("Failed to write read Register to gyro\n");
+        return 0; //0 == error
+    }
+
     int8_t buffer[6];
     if(read(fgyro, buffer, 6) != 6)
     {
