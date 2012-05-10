@@ -1,6 +1,8 @@
 #ifndef ACC_MAG_H
 #define ACC_MAG_H
 
+#include <stdint.h>
+
 /********************************************************
  Name          : lsm303_mag_acc.h
  Author        : Morten Olsen
@@ -40,25 +42,25 @@
 
 int lsm303_init();
 
-//int lsm303_read_acc_measurements(float xyz[3]);
-//int lsm303_read_acc_raw(signed short int xyz[3]);
-//int lsm303_read_acc_SI(float xyz[3]);
+int lsm303_read_acc_measurements(float xyz[3]);
+int lsm303_read_acc_raw(int16_t xyz[3]);
+int lsm303_read_acc_SI(float xyz[3]);
 
-//int lsm303_read_mag_measurements(float xyz[3]);
-//int lsm303_read_magnet_raw(signed short int xyz[3]);
-//int lsm303_read_magnet_tesla(float xyz[3]);
-//int lsm303_read_magnet_gauss(float xyz_gauss[3]);
-//int lsm303_read_magnet_gauss_cal(float xyz[3]);
-//float lsm303_magnet_angle_rad();
+int lsm303_read_mag_measurements(float xyz[3]);
+int lsm303_read_magnet_raw(int16_t xyz[3]);
+int lsm303_read_magnet_tesla(float xyz[3]);
+int lsm303_read_magnet_gauss(float xyz_gauss[3]);
+int lsm303_read_magnet_gauss_cal(float xyz[3]);
+float lsm303_magnet_angle_rad();
 
-////void lsm303_print_mag_measurements();
+//void lsm303_print_mag_measurements();
 
-////void lsm303_print_acc_measurements();
+//void lsm303_print_acc_measurements();
 
-//float lsm303_mag_convert_to_deg_2D(signed short int xy[]);
+float lsm303_mag_convert_to_deg_2D(int16_t xy[]);
 
-//int lsm303_calibrate_acc();
+int lsm303_calibrate_acc();
 
-//int lsm303_calibrate_mag();
+int lsm303_calibrate_mag();
 
 #endif // ACC_MAG_H
