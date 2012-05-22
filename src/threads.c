@@ -1,6 +1,7 @@
 #include <threads.h>
 #include <nmea/nmea.h>
 #include <gyro.h>
+#include <acc_mag.h>
 
 #include <unistd.h>
 #include <sys/time.h>
@@ -15,6 +16,8 @@
 extern nmeaINFO gpsInfo;
 extern nmeaPARSER parser;
 extern float gyro_xyz[3];
+extern float mag_xyz[3];
+extern float acc_xyz[3];
 
 
 
@@ -46,8 +49,8 @@ void * thread_DisplayValues()
         nmea_info2pos(&gpsInfo, &dpos);
         printw("Current Sensor output:\n");
         printw("%ld s\n\n", currentTime );
-        printw("Magnetometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
-        printw("Accelerometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", rand() % 100, rand() % 100, rand() % 100);
+        printw("Magnetometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", mag_xyz[0], mag_xyz[1], mag_xyz[2]);
+        printw("Accelerometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", acc_xyz[0], acc_xyz[1], acc_xyz[2]);
         printw("Gyroscope:\t X:\t%d\tY:\t%d\tZ:\t%d\n", gyro_xyz[0], gyro_xyz[1], gyro_xyz[2]);
         printw("GPS:\t\t Long.:\t%f\tLat.:\t%f\tAlt.:\t%f\n", 180*dpos.lat/M_PI, 180*dpos.lon/M_PI, gpsInfo.elv);
         refresh(); //update ncurses window
@@ -62,20 +65,22 @@ void * thread_SensorFusion()
     struct periodic_info info;
 
     if (itg3200_init())
+    if (lsm303_init())
     if (itg3200_calibrate_gyro())
     {
         make_periodic (500000, &info);
         while(1)
         {
            itg3200_read_rad(gyro_xyz);
+           lsm303_read_acc_measurements(acc_xyz);
+           lsm303_read_mag_measurements(mag_xyz);
            wait_period(&info);
         }
     }
-    else
-    {
-        perror("i2c-init failed\n");
-        exit(1);
-    }
+
+    perror("i2c-init failed\n");
+    exit(1);
+
 }
 
 void * thread_getGPS()
