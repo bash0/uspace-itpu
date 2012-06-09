@@ -2,6 +2,7 @@
 #include <nmea/nmea.h>
 #include <gyro.h>
 #include <acc_mag.h>
+#include <globals.h>
 
 #include <unistd.h>
 #include <sys/time.h>
@@ -19,7 +20,10 @@ extern float gyro_xyz[3];
 extern float mag_xyz[3];
 extern float acc_xyz[3];
 
-
+extern int useGyro;
+extern int useAcc ;
+extern int useMag ;
+extern int useGPS ;
 
 struct periodic_info
 {
@@ -34,7 +38,7 @@ static void wait_period (struct periodic_info *info);
 void * thread_DisplayValues()
 {
     struct periodic_info info;
-    make_periodic (500000, &info);
+    make_periodic (100000, &info);
     nmeaPOS dpos;
     srand ( time(NULL) );
     time_t startTime;
@@ -45,14 +49,19 @@ void * thread_DisplayValues()
         time_t currentTime;
         time ( &currentTime );
         currentTime -= startTime;
+//        printf("Time: %ld\n Accelerometer:\t X:\t%f\tY:\t%f\tZ:\t%f\n", currentTime, acc_xyz[0], acc_xyz[1], acc_xyz[2]);
+//        printf("Magnetometer:\t X:\t%f\tY:\t%f\tZ:\t%f\n", mag_xyz[0], mag_xyz[1], mag_xyz[2]);
 
-        nmea_info2pos(&gpsInfo, &dpos);
         printw("Current Sensor output:\n");
         printw("%ld s\n\n", currentTime );
-        printw("Magnetometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", mag_xyz[0], mag_xyz[1], mag_xyz[2]);
-        printw("Accelerometer:\t X:\t%d\tY:\t%d\tZ:\t%d\n", acc_xyz[0], acc_xyz[1], acc_xyz[2]);
-        printw("Gyroscope:\t X:\t%d\tY:\t%d\tZ:\t%d\n", gyro_xyz[0], gyro_xyz[1], gyro_xyz[2]);
-        printw("GPS:\t\t Long.:\t%f\tLat.:\t%f\tAlt.:\t%f\n", 180*dpos.lat/M_PI, 180*dpos.lon/M_PI, gpsInfo.elv);
+        if(useMag)  printw("Magnetometer:\t X:\t%f\tY:\t%f\tZ:\t%f\n", mag_xyz[0], mag_xyz[1], mag_xyz[2]);
+        if(useAcc)  printw("Accelerometer:\t X:\t%f\tY:\t%f\tZ:\t%f\n", acc_xyz[0], acc_xyz[1], acc_xyz[2]);
+        if(useGyro) printw("Gyroscope:\t X:\t%f\tY:\t%f\tZ:\t%f\n", gyro_xyz[0], gyro_xyz[1], gyro_xyz[2]);
+        if(useGPS)
+        {
+            nmea_info2pos(&gpsInfo, &dpos);
+            printw("GPS:\t\t Long.:\t%f\tLat.:\t%f\tAlt.:\t%f\n", 180*dpos.lat/M_PI, 180*dpos.lon/M_PI, gpsInfo.elv);
+        }
         refresh(); //update ncurses window
         erase();
         wait_period(&info);
@@ -63,17 +72,25 @@ void * thread_SensorFusion()
 {
 
     struct periodic_info info;
+    static int status = TRUE;
+    if(useGyro)
+        if (!itg3200_init())
+            status = FALSE;
+        else if (!itg3200_calibrate_gyro())
+            status = FALSE;
 
-    if (itg3200_init())
-    if (lsm303_init())
-    if (itg3200_calibrate_gyro())
+    if(useAcc || useMag)
+        if (!lsm303_init())
+            status = FALSE;
+
+    if (status)
     {
-        make_periodic (500000, &info);
+        make_periodic (100000, &info);
         while(1)
         {
-           itg3200_read_rad(gyro_xyz);
-           lsm303_read_acc_measurements(acc_xyz);
-           lsm303_read_mag_measurements(mag_xyz);
+           if(useGyro) itg3200_read_deg(gyro_xyz);
+           if(useAcc)  lsm303_read_acc_SI(acc_xyz);
+           if(useMag)  lsm303_read_mag_measurements(mag_xyz);
            wait_period(&info);
         }
     }

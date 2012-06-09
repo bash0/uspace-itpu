@@ -132,3 +132,4 @@ include/gyro.h
 src/gyro.c
 include/acc_mag.h
 src/acc_mag.c
+include/globals.h

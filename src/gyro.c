@@ -18,8 +18,8 @@ float xyz_gyro_offset[3] = {0.0, 0.0, 0.0};
 int itg3200_init()
 {
     //initialize i2c-device antenna
-    fgyro = open("/dev/i2c-2", O_RDWR | O_NOCTTY | O_NDELAY); //check which i2c
-//    int fgyro = open("/dev/i2c-2", O_RDWR); //check which i2c
+    fgyro = open("/dev/i2c-0", O_RDWR | O_NOCTTY | O_NDELAY); //check which i2c
+//    int fgyro = open("/dev/i2c-0", O_RDWR); //check which i2c
     if (fgyro == -1)
     {
         printf("open_port: Unable to open i2c-bus");
@@ -41,7 +41,7 @@ int itg3200_init()
         int8_t whoami = ITG3200_WHO_AM_I;
         if (write(fgyro, &whoami, 1) != 1)
         {
-            printf("Failed to write to gyro\n");
+            printf("Failed to write to gyro (whoami-reg)\n");
             return 0; //0 == error;
         }
 
@@ -61,7 +61,7 @@ int itg3200_read_raw(int xyz_raw[3])
     int8_t readRegister = ITG3200_GYRO_XOUT_H;
     if (write(fgyro, &readRegister, 1) != 1)
     {
-        printf("Failed to write read Register to gyro\n");
+        printf("Failed toaa write read Register to gyro\n");
         return 0; //0 == error
     }
 

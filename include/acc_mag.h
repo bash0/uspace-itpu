@@ -39,9 +39,12 @@
 #define LSM303_IRB_REG_M 		0x0B 	// ID value = 0b00110100
 #define LSM303_IRC_REG_M 		0x0C 	// ID value = 0b00110011
 
+//extern int useGyro;
+//extern int useAcc;
+//extern int useMag;
+//extern int useGPS;
 
 int lsm303_init();
-
 int lsm303_read_acc_measurements(float xyz[3]);
 int lsm303_read_acc_raw(int16_t xyz[3]);
 int lsm303_read_acc_SI(float xyz[3]);
